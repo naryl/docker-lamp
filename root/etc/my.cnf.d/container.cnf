@@ -1,0 +1,6 @@
+[mysql]
+socket=/run/mysqld/mysqld.sock
+
+[mysqld]
+datadir=/var/lib/mysql
+socket=/run/mysqld/mysqld.sock
