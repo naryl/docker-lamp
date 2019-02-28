@@ -16,6 +16,7 @@ test-shell:
 	docker exec -it lamp-test sh
 
 push: build
-	docker login
-	docker tag $(IMAGE) naryl/lamp:$(TAG)
-	docker push naryl/lamp:$(TAG)
+	git add Dockerfile Makefile README.md htdocs/.keep root
+	git commit
+	git push
+	curl -XPOST https://cloud.docker.com/api/build/v1/source/f70a62d9-9ed4-4dbf-9887-64cfa143490c/trigger/e42ddff6-3a61-4d59-abb3-cbd11c34e3cc/call/

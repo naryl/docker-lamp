@@ -30,9 +30,7 @@ RUN addgroup -S mysql && \
 	mkdir -p /run/mysqld /var/lib/mysql && chown mysql:mysql /run/mysqld /var/lib/mysql
 RUN apk add --update --no-cache mysql mysql-client mariadb-server-utils mariadb-mytop && \
 	rm /etc/my.cnf.d/mariadb-server.cnf
-USER mysql:mysql
-RUN mysql_install_db --skip-test-db
-USER root:root
+RUN su mysql -c "mysql_install_db --skip-test-db"
 
 # Interactive stuff
 #RUN apk add --update --no-cache vim bash htop
